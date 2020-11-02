@@ -10,11 +10,19 @@ export default props => {
         return list.map((todo, i) => {
             return (
                 <tr key={i}>
-                    <td>{todo.description}</td>
+                    <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
                     <td>
-                        <If test={todo.done == true} >
+
+                        <IconButton style='success' icon='check' onClick={() => props.handleMarkAsDone(todo)} hide={todo.done}/>
+                        <IconButton style='warning' icon='undo' onClick={() => props.handleMarkAsPending(todo)} hide={!todo.done}/>
+                        <IconButton style='danger' icon='trash-o' onClick={() => props.handleRemove(todo)} hide={!todo.done}/>
+
+
+
+
+                        {/* <If test={todo.done == true} >
                             <div>
-                                <IconButton style='warning' icon='times' onClick={() => props.handleMarkAsPending(todo)} />
+                                <IconButton style='warning' icon='undo' onClick={() => props.handleMarkAsPending(todo)} />
                                 <IconButton style='danger' icon='trash-o' onClick={() => props.handleRemove(todo)} />
                             </div>
                         </If>
@@ -22,8 +30,7 @@ export default props => {
                             <div>
                                 <IconButton style='success' icon='check' onClick={() => props.handleMarkAsDone(todo)} />
                             </div>
-                        </If>
-
+                        </If> */}
 
                     </td>
                 </tr>
