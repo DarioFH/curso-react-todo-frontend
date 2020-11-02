@@ -7,11 +7,25 @@ export default props => {
     return (
         <div role="form" className="todoForm">
             <Grid cols="12 9 10" >
-                <input id="description" className="form-control" placeholder="Adicione uma tarefa"/>
+
+                <input 
+                id="description" 
+                className="form-control" 
+                value={props.description} 
+                onChange={props.handleChange} 
+                placeholder="Adicione uma tarefa"
+                />
+
             </Grid>
 
             <Grid cols="12 3 2" >
-                <IconButton style="success" icon="plus" onClick={(e)=>alert('clicou')}/>
+
+                <IconButton 
+                style="success" 
+                icon="plus" 
+                onClick={props.handleAdd}
+                />
+                
             </Grid>
             
         </div>
